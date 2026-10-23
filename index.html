@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Aima Ledyana Sari</title>
+    
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Configuration Pink Palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        pink: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        },
+                        darkRose: '#2d0619',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth Fade In Up Animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-in-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism Backgrounds */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(251, 207, 232, 0.6);
+        }
+
+        .glass-nav {
+            background: rgba(253, 242, 248, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        /* Glowing Effects */
+        .pink-glow {
+            box-shadow: 0 0 25px -5px rgba(236, 72, 153, 0.3);
+        }
+
+        /* Progress Bar Animation */
+        .progress-bar-fill {
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 0%;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-white to-pink-100/50 text-slate-800 antialiased selection:bg-pink-500 selection:text-white min-h-screen">
+
+    <!-- Background Decorative Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-pink-200/50 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/3 -left-40 w-96 h-96 bg-pink-300/30 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 right-1/4 w-96 h-96 bg-pink-200/40 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 glass-nav border-b border-pink-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#beranda" class="text-2xl font-extrabold tracking-tight text-pink-700 flex items-center gap-2">
+                    <span class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pink-600 to-pink-400 text-white flex items-center justify-center shadow-md text-base">A</span>
+                    <span>Aima<span class="text-pink-500">.</span></span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <a href="#beranda" class="nav-link px-3 py-2 rounded-full text-slate-700 hover:text-pink-600 hover:bg-pink-100/60 font-medium transition-all text-sm">Beranda</a>
+                    <a href="#tentang" class="nav-link px-3 py-2 rounded-full text-slate-700 hover:text-pink-600 hover:bg-pink-100/60 font-medium transition-all text-sm">Tentang</a>
+                    <a href="#pendidikan" class="nav-link px-3 py-2 rounded-full text-slate-700 hover:text-pink-600 hover:bg-pink-100/60 font-medium transition-all text-sm">Pendidikan</a>
+                    <a href="#keahlian" class="nav-link px-3 py-2 rounded-full text-slate-700 hover:text-pink-600 hover:bg-pink-100/60 font-medium transition-all text-sm">Keahlian</a>
+                    <a href="#fokus" class="nav-link px-3 py-2 rounded-full text-slate-700 hover:text-pink-600 hover:bg-pink-100/60 font-medium transition-all text-sm">Minat Proyek</a>
+                </nav>
+
+                <div class="hidden md:block">
+                    <a href="#kontak" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-pink-600 to-pink-500 text-white font-medium hover:from-pink-700 hover:to-pink-600 transition-all shadow-md hover:shadow-pink-500/25 text-sm flex items-center gap-2">
+                        <i class="far fa-paper-plane text-xs"></i> Hubungi Saya
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" aria-label="Buka Menu" class="w-10 h-10 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center hover:bg-pink-200 transition-colors">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg border-b border-pink-200 px-4 pt-3 pb-6 space-y-2 shadow-xl">
+            <a href="#beranda" class="mobile-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-pink-50 hover:text-pink-600">Beranda</a>
+            <a href="#tentang" class="mobile-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-pink-50 hover:text-pink-600">Tentang Saya</a>
+            <a href="#pendidikan" class="mobile-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-pink-50 hover:text-pink-600">Pendidikan</a>
+            <a href="#keahlian" class="mobile-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-pink-50 hover:text-pink-600">Keahlian</a>
+            <a href="#fokus" class="mobile-link block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-pink-50 hover:text-pink-600">Minat Proyek</a>
+            <a href="#kontak" class="mobile-link block px-4 py-2.5 rounded-xl font-medium bg-gradient-to-r from-pink-600 to-pink-500 text-white text-center shadow-md">Hubungi Saya</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="relative z-10">
+        
+        <!-- Hero Section -->
+        <section id="beranda" class="min-h-screen flex items-center pt-28 pb-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Text -->
+                    <div class="lg:col-span-7 text-center lg:text-left fade-in-up">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-100 border border-pink-300 text-pink-800 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+                            <span class="w-2.5 h-2.5 rounded-full bg-pink-500 animate-pulse"></span>
+                            Fresh Graduate Siap Berkontribusi
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+                            Halo, Saya <br class="hidden sm:block"/>
+                            <span class="bg-gradient-to-r from-pink-600 via-pink-500 to-rose-400 bg-clip-text text-transparent">Aima Ledyana Sari</span>
+                        </h1>
+                        
+                        <!-- Role Badges -->
+                        <div class="flex flex-wrap gap-2 justify-center lg:justify-start mb-6">
+                            <span class="px-3 py-1 rounded-lg bg-white/80 border border-pink-200 text-pink-700 text-xs font-semibold shadow-xs">Data Analyst</span>
+                            <span class="px-3 py-1 rounded-lg bg-white/80 border border-pink-200 text-pink-700 text-xs font-semibold shadow-xs">Web Developer</span>
+                            <span class="px-3 py-1 rounded-lg bg-white/80 border border-pink-200 text-pink-700 text-xs font-semibold shadow-xs">Network Specialist</span>
+                        </div>
+
+                        <p class="text-base sm:text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Lulusan D3 Sistem Informasi yang penuh dedikasi, adaptif, dan bersemangat untuk menciptakan solusi digital yang efisien, estetis, serta berbasis data.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="#kontak" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-pink-600 to-pink-500 text-white font-semibold hover:from-pink-700 hover:to-pink-600 transition-all shadow-lg hover:shadow-pink-500/30 transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
+                                <i class="fas fa-paper-plane"></i> Kirim Pesan
+                            </a>
+                            <a href="#tentang" class="px-8 py-3.5 rounded-full bg-white/80 border border-pink-300 text-pink-700 font-semibold hover:bg-pink-100/50 transition-all text-center flex items-center justify-center gap-2">
+                                <i class="fas fa-user-circle"></i> Lebih Dekat
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Profile Visual -->
+                    <div class="lg:col-span-5 flex justify-center fade-in-up" style="transition-delay: 150ms;">
+                        <div class="relative">
+                            <!-- Background Glowing Rings -->
+                            <div class="absolute -inset-4 rounded-full bg-gradient-to-tr from-pink-400 to-rose-300 opacity-40 blur-2xl animate-pulse"></div>
+                            
+                            <!-- Profile Card Frame -->
+                            <div class="relative glass-card p-4 sm:p-5 rounded-3xl shadow-xl border border-pink-200">
+                                <div class="relative overflow-hidden rounded-2xl w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-tr from-pink-200 to-pink-100 flex items-center justify-center">
+                                    <img src="c:\Users\mimaa\Documents\semster 5\portofolio-aima\index.html\WhatsApp Image 2026-07-14 at 20.14.11.jpeg" 
+                                         onerror="this.onerror=null; this.src='https://placehold.co/400x400/fce7f3/be185d?text=Aima+Ledyana';" 
+                                         alt="Aima Ledyana Sari" 
+                                         class="w-full h-full object-cover object-top rounded-2xl transform hover:scale-105 transition-transform duration-500 shadow-inner">
+                                </div>
+                                
+                                <!-- Floating Experience Tag -->
+                                <div class="absolute -bottom-4 -left-4 glass-card px-4 py-3 rounded-2xl border border-pink-300 shadow-lg flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-pink-500 text-white flex items-center justify-center text-lg font-bold shadow-md">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-500 font-medium">Pendidikan Terakhir</p>
+                                        <p class="text-xs sm:text-sm font-bold text-slate-900">D3 Sistem Informasi</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Tentang Saya Section -->
+        <section id="tentang" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-16 fade-in-up">
+                    <span class="text-pink-600 font-bold uppercase tracking-wider text-xs sm:text-sm">Mengenal Lebih Dekat</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Tentang Saya</h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-pink-300 mx-auto rounded-full mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Bio Cards -->
+                    <div class="lg:col-span-5 space-y-4 fade-in-up">
+                        <div class="glass-card p-6 rounded-2xl hover:border-pink-300 transition-all shadow-xs">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fas fa-user-tag"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xs text-slate-500 font-medium uppercase tracking-wider">Nama Lengkap</h3>
+                                    <p class="text-base font-bold text-slate-900">Aima Ledyana Sari</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-2xl hover:border-pink-300 transition-all shadow-xs">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xs text-slate-500 font-medium uppercase tracking-wider">Email Kontak</h3>
+                                    <a href="mailto:ledyanaaima@gmail.com" class="text-base font-bold text-pink-700 hover:underline">ledyanaaima@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-2xl hover:border-pink-300 transition-all shadow-xs">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xs text-slate-500 font-medium uppercase tracking-wider">Domisili</h3>
+                                    <p class="text-base font-bold text-slate-900">Karanganyar, Surakarta</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="lg:col-span-7 glass-card p-8 rounded-3xl shadow-sm fade-in-up" style="transition-delay: 150ms;">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Siap Bertumbuh & Memberikan Dampak Positif</h3>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            Saya merupakan lulusan baru (**fresh graduate**) dari jurusan D3 Sistem Informasi. Memiliki minat yang besar pada analisis data, pembuatan antarmuka web yang ramah pengguna, serta konsep dasar komunikasi jaringan komputer.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed mb-6">
+                            Meskipun baru memulai perjalanan karir profesional, saya dibekali kemauan belajar yang tinggi, ketelitian, serta daya adaptasi cepat terhadap perkembangan teknologi terkini. Saya percaya bahwa kombinasi logika pemrograman dan kepekaan visual dapat menghasilkan produk digital yang fungsional sekaligus menarik.
+                        </p>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-pink-100 pt-6">
+                            <div>
+                                <span class="block text-2xl font-extrabold text-pink-600">100%</span>
+                                <span class="text-xs text-slate-500 font-medium">Komitmen & Antusias</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl font-extrabold text-pink-600">3+</span>
+                                <span class="text-xs text-slate-500 font-medium">Fokus Bidang IT</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl font-extrabold text-pink-600">Siap</span>
+                                <span class="text-xs text-slate-500 font-medium">Bekerja Tim / Mandiri</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Pendidikan Section -->
+        <section id="pendidikan" class="py-20 bg-pink-50/60 border-y border-pink-200/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-16 fade-in-up">
+                    <span class="text-pink-600 font-bold uppercase tracking-wider text-xs sm:text-sm">Latar Belakang Academic</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Pendidikan</h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-pink-300 mx-auto rounded-full mt-4"></div>
+                </div>
+
+                <div class="max-w-4xl mx-auto fade-in-up">
+                    <div class="glass-card p-8 sm:p-10 rounded-3xl border border-pink-200 shadow-md relative overflow-hidden group hover:border-pink-400 transition-all">
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-pink-100 rounded-full group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
+                        
+                        <div class="flex flex-col md:flex-row gap-6 items-start">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 text-white flex items-center justify-center text-3xl flex-shrink-0 shadow-md">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <span class="px-3 py-1 rounded-full bg-pink-100 text-pink-800 text-xs font-bold">D3 Sistem Informasi</span>
+                                    <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">Fresh Graduate</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-slate-900">Universitas Bina Sarana Informatika (UBSI)</h3>
+                                <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                                    Mempelajari konsep fundamental pemrograman komputer, perancangan basis data, analisis dan desain sistem informasi, pengelolaan jaringan lokal, serta teknik visualisasi data pendukung keputusan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Keahlian Section -->
+        <section id="keahlian" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-16 fade-in-up">
+                    <span class="text-pink-600 font-bold uppercase tracking-wider text-xs sm:text-sm">Kompetensi Utama</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Keahlian & Kemampuan</h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-pink-300 mx-auto rounded-full mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <!-- Hard Skills Progress -->
+                    <div class="glass-card p-8 rounded-3xl space-y-6 fade-in-up">
+                        <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2 mb-6">
+                            <i class="fas fa-code text-pink-600"></i> Keterampilan Teknis
+                        </h3>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <span class="text-slate-700">Microsoft Excel & Olah Data</span>
+                                <span class="text-pink-600">85%</span>
+                            </div>
+                            <div class="w-full bg-pink-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-gradient-to-r from-pink-500 to-rose-400 h-full rounded-full progress-bar-fill" data-width="85%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <span class="text-slate-700">Analisis Data & Dasar SQL</span>
+                                <span class="text-pink-600">80%</span>
+                            </div>
+                            <div class="w-full bg-pink-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-gradient-to-r from-pink-500 to-rose-400 h-full rounded-full progress-bar-fill" data-width="80%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <span class="text-slate-700">Web Development (HTML, CSS, JS, Tailwind)</span>
+                                <span class="text-pink-600">78%</span>
+                            </div>
+                            <div class="w-full bg-pink-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-gradient-to-r from-pink-500 to-rose-400 h-full rounded-full progress-bar-fill" data-width="78%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold mb-2">
+                                <span class="text-slate-700">Konfigurasi Jaringan & Topologi Dasar</span>
+                                <span class="text-pink-600">75%</span>
+                            </div>
+                            <div class="w-full bg-pink-100 rounded-full h-3 overflow-hidden">
+                                <div class="bg-gradient-to-r from-pink-500 to-rose-400 h-full rounded-full progress-bar-fill" data-width="75%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skills & Tools Badges -->
+                    <div class="space-y-8 fade-in-up" style="transition-delay: 150ms;">
+                        <div class="glass-card p-8 rounded-3xl">
+                            <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2 mb-6">
+                                <i class="fas fa-heart text-pink-600"></i> Soft Skills
+                            </h3>
+                            <div class="flex flex-wrap gap-2.5">
+                                <span class="px-4 py-2 rounded-full bg-pink-100 text-pink-800 text-sm font-medium hover:bg-pink-200 transition-colors">Pemecahan Masalah</span>
+                                <span class="px-4 py-2 rounded-full bg-pink-100 text-pink-800 text-sm font-medium hover:bg-pink-200 transition-colors">Kemauan Belajar Tinggi</span>
+                                <span class="px-4 py-2 rounded-full bg-pink-100 text-pink-800 text-sm font-medium hover:bg-pink-200 transition-colors">Kerja Sama Tim</span>
+                                <span class="px-4 py-2 rounded-full bg-pink-100 text-pink-800 text-sm font-medium hover:bg-pink-200 transition-colors">Komunikasi Efektif</span>
+                                <span class="px-4 py-2 rounded-full bg-pink-100 text-pink-800 text-sm font-medium hover:bg-pink-200 transition-colors">Ketelitian Kinerja</span>
+                                <span class="px-4 py-2 rounded-full bg-pink-100 text-pink-800 text-sm font-medium hover:bg-pink-200 transition-colors">Adaptasi Cepat</span>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-8 rounded-3xl">
+                            <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2 mb-6">
+                                <i class="fas fa-toolbox text-pink-600"></i> Alat / Tools
+                            </h3>
+                            <div class="flex flex-wrap gap-2.5">
+                                <span class="px-4 py-2 rounded-xl bg-white border border-pink-200 text-slate-700 text-sm font-medium shadow-xs">VS Code</span>
+                                <span class="px-4 py-2 rounded-xl bg-white border border-pink-200 text-slate-700 text-sm font-medium shadow-xs">Microsoft Excel</span>
+                                <span class="px-4 py-2 rounded-xl bg-white border border-pink-200 text-slate-700 text-sm font-medium shadow-xs">MySQL / DBMS</span>
+                                <span class="px-4 py-2 rounded-xl bg-white border border-pink-200 text-slate-700 text-sm font-medium shadow-xs">Cisco Packet Tracer</span>
+                                <span class="px-4 py-2 rounded-xl bg-white border border-pink-200 text-slate-700 text-sm font-medium shadow-xs">Git & GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Minat Proyek Section -->
+        <section id="fokus" class="py-20 bg-pink-50/60 border-y border-pink-200/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-16 fade-in-up">
+                    <span class="text-pink-600 font-bold uppercase tracking-wider text-xs sm:text-sm">Eksplorasi Pembelajaran</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Fokus & Minat Proyek</h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-pink-300 mx-auto rounded-full mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1 -->
+                    <div class="glass-card p-8 rounded-3xl hover:border-pink-400 transition-all hover:-translate-y-2 duration-300 shadow-sm fade-in-up">
+                        <div class="w-14 h-14 rounded-2xl bg-pink-500 text-white flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Visualisasi Data</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Fokus mengolah data mentah menjadi grafik dan dashboard informatif yang mempermudah pengambilan keputusan.
+                        </p>
+                        <span class="text-xs font-semibold text-pink-700 bg-pink-100 px-3 py-1 rounded-full">Data Analytics</span>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="glass-card p-8 rounded-3xl hover:border-pink-400 transition-all hover:-translate-y-2 duration-300 shadow-sm fade-in-up" style="transition-delay: 100ms;">
+                        <div class="w-14 h-14 rounded-2xl bg-pink-500 text-white flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Landing Page & Web App</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Mengembangkan antarmuka web modern yang responsif, interaktif, serta memiliki nilai estetika tinggi.
+                        </p>
+                        <span class="text-xs font-semibold text-pink-700 bg-pink-100 px-3 py-1 rounded-full">Web Development</span>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="glass-card p-8 rounded-3xl hover:border-pink-400 transition-all hover:-translate-y-2 duration-300 shadow-sm fade-in-up" style="transition-delay: 200ms;">
+                        <div class="w-14 h-14 rounded-2xl bg-pink-500 text-white flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Infrastruktur Jaringan</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Memahami perancangan dan simulasi topologi jaringan komputer dasar untuk konektivitas sistem yang stabil.
+                        </p>
+                        <span class="text-xs font-semibold text-pink-700 bg-pink-100 px-3 py-1 rounded-full">Networking</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontak Section -->
+        <section id="kontak" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-16 fade-in-up">
+                    <span class="text-pink-600 font-bold uppercase tracking-wider text-xs sm:text-sm">Mari Terhubung</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Hubungi Saya</h2>
+                    <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-pink-300 mx-auto rounded-full mt-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
+                    
+                    <!-- Contact Information -->
+                    <div class="lg:col-span-5 space-y-6 fade-in-up">
+                        <div class="glass-card p-6 rounded-2xl flex items-center gap-4 border border-pink-200">
+                            <div class="w-12 h-12 rounded-xl bg-pink-500 text-white flex items-center justify-center text-xl flex-shrink-0 shadow-sm">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium">Email Langsung</p>
+                                <a href="mailto:ledyanaaima@gmail.com" class="text-base font-bold text-slate-900 hover:text-pink-600 transition-colors">ledyanaaima@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-2xl flex items-center gap-4 border border-pink-200">
+                            <div class="w-12 h-12 rounded-xl bg-pink-500 text-white flex items-center justify-center text-xl flex-shrink-0 shadow-sm">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium">Lokasi / Alamat</p>
+                                <p class="text-base font-bold text-slate-900">Karanganyar, Surakarta, Jawa Tengah</p>
+                            </div>
+                        </div>
+
+                        <!-- Social Media -->
+                        <div class="glass-card p-6 rounded-2xl border border-pink-200">
+                            <p class="text-xs text-slate-500 font-medium mb-4">Media Sosial & Portofolio Kode</p>
+                            <div class="flex gap-3">
+                                <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="GitHub" class="w-10 h-10 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-7 glass-card p-8 sm:p-10 rounded-3xl border border-pink-200 shadow-md fade-in-up" style="transition-delay: 150ms;">
+                        <form onsubmit="event.preventDefault(); handleFormSubmit();" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Anda</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-pink-200 bg-white/70 focus:bg-white focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition-all" placeholder="Masukkan nama lengkap">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Email Anda</label>
+                                <input type="email" required class="w-full px-4 py-3 rounded-xl border border-pink-200 bg-white/70 focus:bg-white focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition-all" placeholder="nama@email.com">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Pesan / Diskusi</label>
+                                <textarea required rows="4" class="w-full px-4 py-3 rounded-xl border border-pink-200 bg-white/70 focus:bg-white focus:border-pink-500 focus:ring-2 focus:ring-pink-200 outline-none transition-all resize-none" placeholder="Tuliskan pesan atau penawaran kerja..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-pink-600 to-pink-500 text-white font-semibold hover:from-pink-700 hover:to-pink-600 transition-all shadow-md hover:shadow-pink-500/25 flex justify-center items-center gap-2">
+                                <i class="fas fa-paper-plane"></i> Kirim Pesan
+                            </button>
+
+                            <div id="form-status" class="hidden p-4 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 text-center text-sm font-medium">
+                                Terima kasih! Pesan Anda telah berhasil dikirim.
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darkRose text-pink-200/80 py-10 border-t border-pink-900/50 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <a href="#beranda" class="text-2xl font-extrabold tracking-tight text-white inline-block">
+                Aima<span class="text-pink-400">.</span>
+            </a>
+            <p class="text-xs sm:text-sm text-pink-200/60 max-w-md mx-auto">
+                Portofolio online interaktif didesain dengan warna pink estetis, modern, dan penuh antusiasme.
+            </p>
+            <p class="text-xs text-pink-300/50 pt-4 border-t border-pink-900/40">
+                &copy; <span id="year"></span> Aima Ledyana Sari. Dibuat dengan HTML, Tailwind CSS, & JS.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Set dynamic current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fas fa-bars text-lg';
+            } else {
+                menuIcon.className = 'fas fa-times text-lg';
+            }
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fas fa-bars text-lg';
+            });
+        });
+
+        // Scroll Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    
+                    // Trigger Progress Bar Animation
+                    const progressBars = entry.target.querySelectorAll('.progress-bar-fill');
+                    progressBars.forEach(bar => {
+                        const width = bar.getAttribute('data-width');
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 200);
+                    });
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        // Form Submit Simulation
+        function handleFormSubmit() {
+            const statusBox = document.getElementById('form-status');
+            statusBox.classList.remove('hidden');
+            setTimeout(() => {
+                statusBox.classList.add('hidden');
+            }, 4000);
+            document.querySelector('form').reset();
+        }
+
+        // Active Navigation Highlight
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 250)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-pink-600', 'bg-pink-100/60');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('text-pink-600', 'bg-pink-100/60');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
